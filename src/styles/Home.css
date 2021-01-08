@@ -29,9 +29,17 @@
   width: 10vw;
   height: 10vw;
   border-radius: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+  opacity: 90%;
 }
 .home__play-btn svg {
   font-size: 80px;
+}
+
+.home__play-btn:hover {
+  transform: translate(2px, -5px);
+  opacity: 100%;
 }
 .home__info-test {
   color: rgba(211, 211, 211, 0.801);

@@ -1,0 +1,48 @@
+const { REACT_APP_API_URI, REACT_APP_TOKEN } = process.env;
+const TOKEN = JSON.parse(localStorage.getItem("token")) || REACT_APP_TOKEN;
+
+export const postNewExam = async (body) => {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("auth-token", TOKEN && TOKEN);
+  const requestOptions = {
+    headers: myHeaders,
+    method: "POST",
+    body: JSON.stringify(body),
+  };
+  console.log(body);
+
+  try {
+    const res = await fetch(`${REACT_APP_API_URI}/exams/start`, requestOptions);
+    console.log(res);
+    if (res.ok) {
+      console.log(res);
+      const data = await res.json();
+      return data;
+    } else {
+      console.log("there was a problem starting the exam");
+      return undefined;
+    }
+  } catch (err) {
+    console.log(err);
+    console.log("there was a problem starting the exam");
+    return undefined;
+  }
+};
+
+export const getExamById = async (id) => {
+  try {
+    const res = await fetch(`${REACT_APP_API_URI}/exams/` + id);
+    if (res.ok) {
+      const data = await res.json();
+      return data;
+    } else {
+      console.log("there was a problem starting the exam");
+      return undefined;
+    }
+  } catch (err) {
+    console.log(err);
+    console.log("there was a problem starting the exam");
+    return undefined;
+  }
+};

@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "../styles/Home.css";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import appcontext from "../context/app-context";
 
-const Home = () => {
+const Home = ({ history }) => {
+  const { startExam } = useContext(appcontext);
+
+  const startNewExam = async () => {
+    const body = {
+      name: "Quizz",
+      totalDuration: "800",
+    };
+    await startExam(body);
+    history.push("/quiz");
+  };
+
   return (
     <div className="home">
       <Container>
@@ -20,7 +32,7 @@ const Home = () => {
             </p>
           </Col>
           <Col sm={12} md={3}>
-            <span className="home__play-btn">
+            <span className="home__play-btn" onClick={() => startNewExam()}>
               <PlayArrowIcon />
             </span>
           </Col>
