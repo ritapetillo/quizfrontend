@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import "../styles/NavigationBar.css";
 
 const NavigationBar = () => {
+  const [showLogin, setShowLogin] = useState(false);
+
   return (
     <Navbar variant="dark" fixed="top">
       <Container className="mt-2">

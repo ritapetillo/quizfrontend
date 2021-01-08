@@ -1,8 +1,8 @@
 import React, { useReducer, useEffect } from "react";
-import { SET_CURRENT_EXAM } from "./app-actions";
+import { SET_CURRENT_EXAM,AUTH } from "./app-actions";
 import AppContext from "./app-context";
 import appReducer from "./app-reducer";
-import { postNewExam, getExamById } from "../lib/fetches";
+import { postNewExam, getExamById, login,getUser } from "../lib/fetches";
 
 function AppState(props) {
   const initialState = {
@@ -12,7 +12,24 @@ function AppState(props) {
   };
 
   const [state, dispatch] = useReducer(appReducer, initialState);
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
+
+  const doLogin = async (cred) => {
+    try {
+      console.log(cred);
+      const token = await login(cred);
+      if (token) {
+        await localStorage.setItem("TOKEN", JSON.stringify(token));
+        const user = await getUser(token);
+        dispatch({
+          type: AUTH,
+          payload: user,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const startExam = async (body) => {
     try {
