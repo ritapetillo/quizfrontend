@@ -1,0 +1,42 @@
+.home {
+  background: var(--dark-blue);
+  min-height: 100vh;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.home__title {
+  margin-top: 30vh;
+  font-size: 60px;
+  color: white;
+}
+
+.home__play-btn {
+  margin-top: 40vh;
+  background: #ff512f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #dd2476,
+    #ff512f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #dd2476,
+    #ff512f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10vw;
+  height: 10vw;
+  border-radius: 100%;
+}
+.home__play-btn svg {
+  font-size: 80px;
+}
+.home__info-test {
+  color: rgba(211, 211, 211, 0.801);
+  margin-top: 30px;
+  font-size: 14px;
+  line-height: 24px;
+  width: 80%;
+}
