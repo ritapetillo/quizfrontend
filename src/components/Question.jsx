@@ -5,7 +5,8 @@ import "../styles/Question.css";
 function Question({ question, setResponse, selected, index }) {
   // question.duration * 1000;
   useEffect(() => {
-    const countDown = setTimeout(() => {
+      const countDown = setTimeout(() => {
+        
       return () => {
         clearTimeout(countDown);
       };

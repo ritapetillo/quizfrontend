@@ -1,4 +1,4 @@
-import { SET_CURRENT_EXAM } from "./app-actions";
+import { SET_CURRENT_EXAM, AUTH,LOGOUT } from "./app-actions";
 
 const appReducer = (state, action) => {
   console.log(action);
@@ -7,6 +7,18 @@ const appReducer = (state, action) => {
       return {
         ...state,
         currentExam: action.payload,
+      };
+    case AUTH:
+      return {
+        ...state,
+        user: action.payload,
+        isAuth: true,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        user: "",
+        isAuth: false,
       };
 
     default:

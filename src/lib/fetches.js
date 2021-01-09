@@ -118,7 +118,8 @@ export const login = async (body) => {
     });
     if (res.ok) {
       console.log(res);
-      const data = await res.json();
+      const data = await res.text();
+      console.log(data);
       return data;
     } else {
       console.log("there was a problem fetching data");
@@ -149,4 +150,3 @@ export const getUser = async (token) => {
     console.log(err);
   }
 };
-
